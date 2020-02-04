@@ -39,8 +39,8 @@ def find():
 def login():
     id = request.form['id']
     pw = request.form['pw']
-   # print(id)
-   # print(pw)
+    print(id)
+    print(pw)
     return render_template('main.html')
 
 

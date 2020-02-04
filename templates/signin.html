@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+
+  <link href={{ url_for('static', filename = "vendor/fontawesome-free/css/all.min.css") }} rel="stylesheet" type="text/css">
+
   <style>
       body{
           background-image: url("/static/img/signin_background.jpg");
@@ -14,6 +17,7 @@
           background-size: 100% 280%;
 
       }
+
   </style>
   <title>Sign in - to use Journer</title>
 
@@ -29,11 +33,17 @@
         <a href="/find">Find id/pw</a>
 
             <form action="/main" method="POST">
-                <input type="text" name="id" class="form-control" placeholder="Enter id..." aria-label="Enter id..." aria-describedby="basic-addon">
-                <br>
+                <span>
+                    <input type="text" name="id" class="form-control" placeholder="Enter id..." aria-label="Enter id..." aria-describedby="basic-addon">
+                    <div>
                     <input type="password" name="pw" class="form-control" placeholder="Enter pw..." aria-label="Enter pw..." aria-describedby="basic-addon">
-                </br>
-                <input type = "submit"  value="Sign in"></input>
+                    </div>
+                </span>
+                <span>
+                    <button id="signin_btn" type = "submit" value="Sign in">
+                        <i class="far fa-comment-alt fa-3x"></i>
+                    </button>
+                </span>
             </form>
 
     </center>
