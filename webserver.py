@@ -16,7 +16,7 @@ def sign_in():
     return render_template('signin.html')
 
 
-"""sign uo"""
+"""sign up"""
 
 
 @app.route('/signup', methods=["GET"])
