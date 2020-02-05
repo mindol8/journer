@@ -43,7 +43,7 @@ try:
         print(result)
 except:
     print('DB Connection failed')
-finally:
+else:
     # 사용후 close
     cursor.close()
     connection.commit()
