@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from DAL import *
+#from DAL import *
 
 app = Flask(__name__)
 
