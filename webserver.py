@@ -38,10 +38,42 @@ def find():
 
 @app.route('/main', methods = ["POST"])
 def login():
-    id = request.form['id']
+    email = request.form['id']
     pw = request.form['pw']
-    print(id)
-    print(pw)
+
+    login_query  = "SELECT COUNT(*) FROM ACCOUNT "
+    login_query += "WHERE 1 = 1 "
+    login_query += f"AND EMAIL = '{email}' "
+    login_query += f"AND PASSWORD = '{pw}'"
+
+    try:
+        connection, cursor = db_connection('journer', 'traveler')
+        print('DB Connnection complete')
+    except:
+        print('DB Connection failed')
+
+    try:
+        cursor.execute(login_query)
+
+        # 1개만 받아오는 법을 모르겠습니다 수정하겠습니다.
+        for row in cursor:
+            if row[0] == 1:
+                print('login 성공!')
+            else:
+                print('이메일 또는 비밀번호를 다시 확인해 주십시오.')
+
+    except:
+        print('이메일 또는 비밀번호를 다시 확인해 주십시오.')
+
+    else:
+        cursor.close()
+        connection.commit()
+        connection.close()
+
+
+
+
+
     return render_template('main.html')
 
 
