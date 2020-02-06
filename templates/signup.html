@@ -21,6 +21,7 @@
             border-style: solid;
             width: 500px;
             position: center;
+            background: rgba(255,255,255,0.4);
         }
         form div {
             border: none;
@@ -60,14 +61,14 @@
             -webkit-border-radius: 3px;
             -khtml-border-radius: 3px;
             border-radius: 3px;
-            font: italic 13px 맑은고딕,굴림,돋움;
+            font: 13px 맑은고딕,굴림,돋움;
             outline: none;
             padding: 5px;
             width: 200px;
         }
         form p {
             background: #b9cf6a;
-            background: rgba(255,255,255,.3);
+            background: rgba(255,255,255,.5);
             border-color: #e3ebc3;
             border-color: rgba(255,255,255,.6);
             border-style: solid;
@@ -83,21 +84,18 @@
             width: 450px;
             height: 32px;
         }
-
-
     </style>
 
 </head>
 <body>
 <center>
-    <br></br><br></br>
+    <br><br>
     <form method="post">
         <h1 class="mb-3">Sign up!</h1>
-        <div>
+        <div id="form_wrapper">
             <p>
                 <label for="email">이메일</label>
                 <input id="email" name="email" type="text" placeholder="abcd@domain.com" equired autofocus>
-
             </p>
             <p>
                 <label for="pwd1">비밀번호</label>
@@ -121,7 +119,7 @@
             </p>
             <p>
                 <label pwd="email">생년월일</label>
-                <input id="email" name="email" type="email" placeholder="yyyy/mm/dd" required autocomplete="off">
+                <input id="birth" name="birth" type="date" placeholder="yyyy/mm/dd" required autocomplete="off">
             </p>
             <p>
                 <label pwd="tel">연락처</label>
@@ -129,7 +127,7 @@
             </p>
             <br>
             <button type="submit"> 제출 </button>
-            </br>
+            <br>
         </div>
     </form>
 </center>
