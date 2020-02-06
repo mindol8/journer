@@ -17,12 +17,38 @@ def sign_in():
     return render_template('signin.html')
 
 
-"""sign up"""
+"""sign up page"""
 
 
 @app.route('/signup', methods=["GET"])
 def sign_up():
     return render_template('signup.html')
+
+@app.route('/signup',methods=["POST"])
+def make_account():
+    account_input = tuple(request.form.to_dict().values())
+    make_account_query = "INSERT INTO ACCOUNT VALUES(:1,:2,:4,:5,:6,'',:7,'C')"
+    print(account_input)
+    try:
+        connection, cursor = db_connection('journer', 'traveler')
+        print('DB Connnection complete')
+    except:
+        print('DB Connection failed')
+
+    try:
+        cursor.execute(make_account_query, account_input)
+    except cx_Oracle.DatabaseError as e:
+        print(e)
+    else:
+        cursor.close()
+        connection.commit()
+        connection.close()
+
+
+
+
+
+    return render_template('index.html')
 
 
 """find id/pw"""

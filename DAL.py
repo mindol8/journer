@@ -1,13 +1,13 @@
 import cx_Oracle
 
 def db_connection(account = 'journer', password = 'traveler', ip = '127.0.0.1:1521', sid = 'orcl'):
-    '''
+    """
     :param account: Database account
     :param password: Database password
     :param ip: Database server ip address (format - ip:port)
     :param sid: Database system identifier
     :return: Connection , Cursor of Connected Database
-    '''
+    """
 
     con = cx_Oracle.connect(f'{account}/{password}@{ip}/{sid}')
     cur = con.cursor()
