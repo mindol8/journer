@@ -26,9 +26,23 @@ def sign_up():
 
 @app.route('/signup',methods=["POST"])
 def make_account():
-    account_input = tuple(request.form.to_dict().values())
-    make_account_query = "INSERT INTO ACCOUNT VALUES(:1,:2,:4,:5,:6,'',:7,'C')"
-    print(account_input)
+    email = request.form['email']
+    pwd = request.form['pwd1']
+    name = request.form['fullname']
+    sex = request.form['sex']
+    birthday = request.form['birth']
+    tel_num = request.form['tel']
+
+    sign_up_query = 'INSERT INTO ACCOUNT VALUES ('
+    sign_up_query += f"'{email}',"
+    sign_up_query += f"'{pwd}',"
+    sign_up_query += f"'{name}',"
+    sign_up_query += f"'{sex}',"
+    sign_up_query += f"'{birthday}',"
+    sign_up_query += "'photo_path',"
+    sign_up_query += f"'{tel_num}',"
+    sign_up_query += "'C')"
+
     try:
         connection, cursor = db_connection('journer', 'traveler')
         print('DB Connnection complete')
@@ -36,7 +50,9 @@ def make_account():
         print('DB Connection failed')
 
     try:
-        cursor.execute(make_account_query, account_input)
+        cursor.execute(sign_up_query)
+        #화면상 출력 필요
+        print('회원가입에 성공했습니다.')
     except cx_Oracle.DatabaseError as e:
         print(e)
     else:
