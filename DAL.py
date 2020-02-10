@@ -12,7 +12,7 @@ def db_connection(account = 'journer', password = 'traveler', ip = '127.0.0.1:15
     con = cx_Oracle.connect(f'{account}/{password}@{ip}/{sid}')
     cur = con.cursor()
 
-    return con , cur
+    return con, cur
 
 
 
