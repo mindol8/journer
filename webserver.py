@@ -22,7 +22,7 @@ def sign_in():
 
 @app.route('/signup', methods=["GET"])
 def sign_up():
-    return render_template('signup.html')
+    return render_template('signup_test.html')
 
 @app.route('/signup',methods=["POST"])
 def make_account():
