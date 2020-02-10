@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <link href="{{ url_for('static', filename = 'vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+
+  <style>
+      body{
+          background-image: url("/static/img/signin_background.jpg");
+
+          background-repeat: no-repeat;
+          background-size: cover;
+
+      }
+      button#signin_btn{
+          background-image: url("/static/img/sign_in_btn.jpg");
+          height: 25px;
+          width: 160px;
+      }
+      a.sign_up{
+          color: #1c7430;
+      }
+      a.find_iap{
+          color: #1c7430;
+               }
+      form p {
+            background: #b9cf6a;
+            background: rgba(255,255,255,.5);
+            border-color: #e3ebc3;
+            border-color: rgba(255,255,255,.6);
+            border-style: solid;
+            border-width: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -khtml-border-radius: 5px;
+            border-radius: 5px;
+            line-height: 30px;
+            list-style: none;
+            padding: 5px 10px;
+            margin-bottom: 2px;
+            width: 450px;
+            height: 32px;
+        }
+  </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <title>Sign in - Journer</title>
+</head>
+
+<body>
+    <center>
+        <br><br>
+        <h1 class="mb-3">Journer</h1>
+        <a class="sign_up" href="/signup" target="_blank">Sign up</a>
+        <a class="find_iap" href="/find">Find id/pw</a>
+
+            <form action="/login" method="POST">
+                <p>
+                    <label for="email" >이메일</label>
+                    <input type="text" name="id" class="form-control">
+                </p>
+                    <div>
+                        <p>
+                            <label for="email">비밀번호</label>
+                            <input type="password" name="pw" class="form-control">
+                        </p>
+                    </div>
+
+                    <button id="signin_btn" type="submit" value="Sign in">
+                        로그인
+                    </button>
+            </form>
+        {% if fail %}
+            <div id="chk_again" style="color:red;">아이디, 비밀번호를 다시 확인해주세요</div>
+        {% endif %}
+    </center>
+</body>
+<script>
+</script>
+</html>
