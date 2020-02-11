@@ -22,7 +22,7 @@ def sign_in():
 
 @app.route('/signup', methods=["GET"])
 def sign_up():
-    return render_template('signup_test.html')
+    return render_template('signup.html')
 
 @app.route('/signup',methods=["POST"])
 def make_account():
@@ -42,6 +42,7 @@ def make_account():
     sign_up_query += "'photo_path',"
     sign_up_query += f"'{tel_num}',"
     sign_up_query += "'C')"
+
 
     try:
         connection, cursor = db_connection('journer', 'traveler')

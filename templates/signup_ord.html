@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="{{ url_for('static', filename = 'vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <title>Sign up - Journer</title>
+
+    <style>
+        body{
+            background-image: url("/static/img/signin_background.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        form{
+            border-color: #e3ebc3;
+            border-color: rgba(255,255,255,.6);
+            border-style: solid;
+            width: 500px;
+            position: center;
+            background: rgba(255,255,255,0.4);
+        }
+        form div {
+            border: none;
+            margin-bottom: 10px;
+            position: center;
+        }
+        form p label {
+            float: left;
+            font-size: 17px;
+            width: 110px;
+        }
+
+       form p span{
+            position: center;
+        }
+
+        form button {
+            background: #384313;
+            border: none;
+            -moz-border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -khtml-border-radius: 20px;
+            border-radius: 20px;
+            color: #ffffff;
+            display: block;
+            font: 16px 맑은고딕,굴림,돋움;
+            letter-spacing: 1px;
+            margin-left: 20px;
+            margin-right: 20px;
+            padding: 7px 25px;
+            text-shadow: 0 1px 1px #000000;
+            text-transform: uppercase;
+            display:inline-block;
+        }
+        form p input:not([type=radio]) {
+            background: #ffffff;
+            border: none;
+            -moz-border-radius: 3px;
+            -webkit-border-radius: 3px;
+            -khtml-border-radius: 3px;
+            border-radius: 3px;
+            font: 13px 맑은고딕,굴림,돋움;
+            outline: none;
+            padding: 5px;
+            width: 200px;
+        }
+        form p {
+            background: #b9cf6a;
+            background: rgba(255,255,255,.5);
+            border-color: #e3ebc3;
+            border-color: rgba(255,255,255,.6);
+            border-style: solid;
+            border-width: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -khtml-border-radius: 5px;
+            border-radius: 5px;
+            line-height: 30px;
+            list-style: none;
+            padding: 5px 10px;
+            margin-bottom: 2px;
+            width: 450px;
+            height: 32px;
+        }
+    </style>
+</head>
+<body>
+<center>
+    <br><br>
+    <form action ="/signup"  method="post">
+        <h1 class="mb-3">회원가입</h1>
+        <div id="form_wrapper">
+            <p>
+                <label for="email">이메일</label>
+                <input id="email" name="email" type="text" placeholder="abcd@domain.com" required autofocus>
+            </p>
+            <p>
+                <label for="pwd1">비밀번호</label>
+                <input id="pwd1" name="pwd1" type="password"  required>
+            </p>
+            <p>
+                <label pwd="pwd2">비밀번호 확인</label>
+                <input id="pwd2" name="pwd2" type="password" required>
+            </p>
+            <p>
+                <label pwd="fullname">이름</label>
+                <input id="fullname" name="fullname" type="text" required>
+            </p>
+            <p>
+                <label pwd="sex">성별</label>
+                <span>
+                    <input type="radio"name="sex" value="M"/>남
+                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    <input type="radio"name="sex" value="F"/>여
+                </span>
+            </p>
+            <p>
+                <label pwd="birth">생년월일</label>
+                <input id="birth" name="birth" type="date" placeholder="yyyy/mm/dd" required autocomplete="off">
+            </p>
+            <p>
+                <label pwd="tel">연락처</label>
+                <input id="tel" name="tel" type="tel" placeholder="010-1234-5678" autocomplete="off">
+            </p>
+            <br>
+            <button type="submit"> 확인 </button>
+            <button href=""> 취소 </button>
+            <br>
+        </div>
+    </form>
+</center>
+</body>
+</html>
