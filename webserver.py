@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main_page():
-    return render_template('index.html')
+    return render_template('index2.html')
 
 
 """signin page"""
@@ -16,6 +16,11 @@ def main_page():
 def sign_in():
     return render_template('signin.html')
 
+@app.route('/login', methods=['POST'])
+def log_in():
+    email = request.form['email']
+    pw = request.form['pw']
+    return render_template('index.html')
 
 """sign up page"""
 
@@ -63,9 +68,7 @@ def make_account():
 
 
 
-
-
-    return render_template('index.html')
+    return render_template('signin.html')
 
 
 """find id/pw"""
