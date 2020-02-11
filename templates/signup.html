@@ -100,9 +100,40 @@
             margin-left: 4px;
             }
         </style>
+        <script>
+        function password_validation() {
+            let loginForm = document.loginForm;
+            let password1 = loginForm.pwd1.value;
+            let password2 = loginForm.pwd2.value;
+
+            if(password1 == password2)
+                return true;
+            else
+                return false;
+        }
+
+        function check_validation() {
+            let loginForm = document.loginForm;
+            let email = loginForm.email.value;
+            let password = loginForm.pwd1.value;
+            let name = loginForm.fullname.value;
+            let sex = loginForm.sex.value;
+            let birth = loginForm.birth.value;
+            let tel = loginForm.tel.value;
+
+            if(password_validation()) {
+                if(!email || !password || !name || !sex || !birth || !tel) {
+                    alert("로그인 폼을 전부 채워주세요");
+                }
+                else
+                    loginForm.submit();
+            }
+            else
+                alert("비밀번호가 일치하지 않습니다.");
+        }
+        </script>
     </head>
     <body>
-        <form action ="/signup"  method="POST">
         <div class="container">
             <div class="d-flex justify-content-center h-100">
                 <div class="card">
@@ -110,6 +141,7 @@
                         <h3>JOURNER</h3>
                     </div>
                     <div class="card-body">
+                        <form name="loginForm" action ="/signup"  method="POST">
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user-friends"></i></span>
@@ -160,7 +192,7 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <input type="submit" value="확인" class="btn login_btn">
+                                <input type="button" onclick="check_validation();" value="확인" class="btn login_btn">
                                 <input type="button"  onclick="history.back(-1);" value="취소" class="btn login_btn">
                             </div>
                         </form>
