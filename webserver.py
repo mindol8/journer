@@ -108,7 +108,13 @@ def login():
         connection.commit()
         connection.close()
 
-    return render_template('main.html')
+    return render_template('index.html')
+
+
+"""review board"""
+@app.route('/review', methods=['GET'])
+def review_board():
+    return render_template('review.html')
 
 
 if __name__ == '__main__':
