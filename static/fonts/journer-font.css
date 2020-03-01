@@ -1,0 +1,11 @@
+html, body, p, h1, h2, h3, h4, h5, h6, h7, a, button, div, .btn {
+	font-family: 'Noto Sans KR';
+}
+
+#mainNav .navbar-nav .nav-item .nav-link {
+	font-family: 'Noto Sans KR';
+}
+
+#mainNav .navbar-brand {
+	font-family: 'Noto Sans KR';
+}
