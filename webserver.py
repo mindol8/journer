@@ -10,8 +10,6 @@ def main_page():
 
 
 """signin page"""
-
-
 @app.route('/signin', methods=['GET'])
 def sign_in():
     return render_template('signin.html')
@@ -22,9 +20,8 @@ def log_in():
     pw = request.form['pw']
     return render_template('index.html')
 
+
 """sign up page"""
-
-
 @app.route('/signup', methods=["GET"])
 def sign_up():
     return render_template('signup.html')
@@ -48,7 +45,6 @@ def make_account():
     sign_up_query += f"'{tel_num}',"
     sign_up_query += "'C')"
 
-
     try:
         connection, cursor = db_connection('journer', 'traveler')
         print('DB Connnection complete')
@@ -66,22 +62,16 @@ def make_account():
         connection.commit()
         connection.close()
 
-
-
     return render_template('signin.html')
 
 
 """find id/pw"""
-
-
 @app.route('/find', methods=['GET'])
 def find():
     return render_template('find.html')
 
 
 """login information"""
-
-
 @app.route('/login', methods=["POST"])
 def login():
     email = request.form['id']
@@ -111,18 +101,12 @@ def login():
                 print('이메일 또는 비밀번호를 다시 확인해 주십시오.')
                 # 로그인 실패시 signin 페이지를 다시 렌더링 해주고, fail 파라미터를 보내줘서 문구를 띄워줍니다.
                 return render_template('signin.html', fail=True)
-
     except:
         print('이메일 또는 비밀번호를 다시 확인해 주십시오.')
-
     else:
         cursor.close()
         connection.commit()
         connection.close()
-
-
-
-
 
     return render_template('main.html')
 
