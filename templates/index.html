@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
 
@@ -8,14 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Creative - Start Bootstrap Theme</title>
-
-  <!-- Font Awesome Icons -->
-  <link href="{{ url_for('static', filename = 'vendor/fontawesome-free/css/all.min.css' ) }}" rel="stylesheet" type="text/css">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet">
-  <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+  <title>Journer</title>
 
   <!-- Plugin CSS -->
   <link href="{{ url_for('static', filename = 'vendor/magnific-popup/magnific-popup.css' ) }}" rel="stylesheet">
@@ -25,6 +18,10 @@
 
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'map-continent/includes/style.css' )}}" media="all" />
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'map-continent/cssmap-continents/cssmap-continents.css' )}}" media="screen" />
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename = 'fonts/journer-font.css') }}" type="text/css">
 </head>
 
 <body id="page-top">
@@ -239,7 +236,7 @@
 
     // CSSMap;
     $("#map-continents").CSSMap({
-      "size": 1450
+      "size": 1450,
       "responsive": "auto"
     });
     // END OF THE CSSMap;
