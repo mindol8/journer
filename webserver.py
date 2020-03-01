@@ -53,7 +53,7 @@ def make_account():
 
     try:
         cursor.execute(sign_up_query)
-        #화면상 출력 필요
+        # 화면상 출력 필요
         print('회원가입에 성공했습니다.')
     except cx_Oracle.DatabaseError as e:
         print(e)
