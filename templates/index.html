@@ -8,8 +8,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Creative - Start Bootstrap Theme</title>
-
+    <title>Journer - Enjoy your trip with Journer</title>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <login_text></login_text>
     <!-- Font Awesome Icons -->
     <link href="{{ url_for('static', filename = 'vendor/fontawesome-free/css/all.min.css' ) }}" rel="stylesheet" type="text/css">
 
@@ -33,6 +34,7 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
     <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">Journer</a>
+
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -173,6 +175,14 @@
     </div>
 </footer>
 
+<script>
+    var session_data = {{ temp|tojson }}
+    sessionStorage.setItem("name",session_data[0]);
+    sessionStorage.setItem("email",session_data[1]);
+    sessionStorage.setItem("flag",session_data[2]);
+    console.log(sessionStorage.getItem("name"))
+
+</script>
 <!-- Bootstrap core JavaScript -->
 <script src="{{ url_for('static', filename = 'vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ url_for('static', filename = 'vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -198,6 +208,7 @@
 
     });
 </script>
+
 </body>
 
 </html>
