@@ -3,10 +3,13 @@ from DAL import *
 
 app = Flask(__name__)
 
+session_data = ["로그인이 필요합니다", "email", "0"]
 
 @app.route('/')
 def main_page():
-    return render_template('index.html')
+    global session_data
+    temp = []
+    return render_template('index.html',temp = session_data)
 
 
 """signin page"""
@@ -18,7 +21,13 @@ def sign_in():
 def log_in():
     email = request.form['email']
     pw = request.form['pw']
-    return render_template('index.html')
+    ###로그인 확인###
+    global session_data
+    session_data[0] = request.form["name"]
+    session_data[1] = email
+    session_data[2] = "1"###권한###
+    temp = []
+    return render_template('index.html', temp = session_data)
 
 
 """sign up page"""
