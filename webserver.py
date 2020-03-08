@@ -17,17 +17,6 @@ def main_page():
 def sign_in():
     return render_template('signin.html')
 
-@app.route('/login', methods=['POST'])
-def log_in():
-    email = request.form['email']
-    pw = request.form['pw']
-    ###로그인 확인###
-    global session_data
-    session_data[0] = request.form["name"]
-    session_data[1] = email
-    session_data[2] = "1"###권한###
-    temp = []
-    return render_template('index.html', temp = session_data)
 
 
 """sign up page"""
@@ -117,7 +106,15 @@ def login():
         connection.commit()
         connection.close()
 
-    return render_template('index.html')
+    email = request.form['email']
+    pw = request.form['pw']
+    ###로그인 확인###
+    global session_data
+    session_data[0] = request.form["name"]
+    session_data[1] = email
+    session_data[2] = "1"  ###권한###
+    temp = []
+    return render_template('index.html', temp=session_data)
 
 
 """review board"""
