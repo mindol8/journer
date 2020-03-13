@@ -10,7 +10,6 @@
 
     <title>Journer - Enjoy your trip with Journer</title>
     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    <login_text></login_text>
     <!-- Font Awesome Icons -->
     <link href="{{ url_for('static', filename = 'vendor/fontawesome-free/css/all.min.css' ) }}" rel="stylesheet" type="text/css">
 
@@ -66,7 +65,7 @@
                 <br>
             </div>
             <div class="col-lg-8 align-self-baseline">
-                <p class="text-white-75 font-weight-light mb-5">회원가입을 하고 <strong>Journer!</strong>를 만나보세요</p>
+                <h3 class="text-white-75 font-weight-light mb-5">회원가입을하고 Journer!를 만나보세요</h3>
                 <a class="btn btn-primary btn-xl js-scroll-trigger" href="/signin">로그인</a>
                 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                 <a class="btn btn-primary btn-xl js-scroll-trigger" href="/signup">회원가입</a>
@@ -176,11 +175,13 @@
 </footer>
 
 <script>
-    var session_data = {{ temp|tojson }}
-    sessionStorage.setItem("name",session_data[0]);
-    sessionStorage.setItem("email",session_data[1]);
-    sessionStorage.setItem("flag",session_data[2]);
-    console.log(sessionStorage.getItem("name"))
+    var user_name = {{ name|tojson }};
+    console.log(user_name[0]);
+    var string = document.getElementsByTagName("h3")[0].innerHTML;
+    if(user_name[0] != "temp"){
+
+        document.getElementsByTagName("h3")[0].innerHTML = string.replace("회원가입을하고 Journer!를 만나보세요",user_name[0]+"님 환영합니다.");
+    }
 
 </script>
 <!-- Bootstrap core JavaScript -->

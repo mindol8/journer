@@ -1,15 +1,31 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect,session,escape, url_for
+from datetime import timedelta
 from DAL import *
 
 app = Flask(__name__)
 
-session_data = ["로그인이 필요합니다", "email", "0"]
+###세션키값(임의로 설정함)###
+app.secret_key = 'session_key_set'
+
+session_data = [1]
+
+@app.before_request
+def set_session():
+    session.permanent = True
+    app.permanent_session_lifetime = timedelta(hours=24)
+    ###세션 수명 24시간###
+
 
 @app.route('/')
 def main_page():
     global session_data
-    temp = []
-    return render_template('index.html',temp = session_data)
+
+    if 'name' in session:
+        session_data[0] = '%s' % escape(session['name'])
+    else:
+        session.pop('name', None)
+        session_data[0] = 'temp'
+    return render_template('index.html', name = session_data)
 
 
 """signin page"""
@@ -75,6 +91,7 @@ def find():
 """login information"""
 @app.route('/login', methods=["POST"])
 def login():
+    global session_data
     email = request.form['id']
     pw = request.form['pw']
 
@@ -97,6 +114,13 @@ def login():
             if row[0] == 1:
                 print('login 성공!')
                 # 임시로 로그인 성공시 index 페이지로 보내줍니다. 추후 수정이 필요합니다.
+                session['name'] = '이름이당'  ###디비에서 이름 가져와서 넣어야함###
+                session['email'] = email
+                session['pw'] = pw
+                print('%s' % escape(session['name']))
+                if 'name' in session:
+                    session_data[0] = '%s' % escape(session['name'])
+
                 return redirect('/')
             else:
                 print('이메일 또는 비밀번호를 다시 확인해 주십시오.')
@@ -109,15 +133,7 @@ def login():
         connection.commit()
         connection.close()
 
-    email = request.form['email']
-    pw = request.form['pw']
-    ###로그인 확인###
-    global session_data
-    session_data[0] = request.form["name"]
-    session_data[1] = email
-    session_data[2] = "1"  ###권한###
-    temp = []
-    return render_template('index.html', temp=session_data)
+
 
 
 """review board"""
