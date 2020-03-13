@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from DAL import *
 
 app = Flask(__name__)
@@ -53,13 +53,17 @@ def make_account():
         # 화면상 출력 필요
         print('회원가입에 성공했습니다.')
     except cx_Oracle.DatabaseError as e:
+        # ORA-00001: 무결성 제약 조건(JOURNER.SYS_C009995)에 위배됩니다
+        # 여기다가 이메일 중복 체크
         print(e)
+        return "error_email"
     else:
         cursor.close()
         connection.commit()
         connection.close()
 
-    return render_template('signin.html')
+    return "success_signup"
+    #return render_template('signin.html')
 
 
 """find id/pw"""
